@@ -1,59 +1,1756 @@
-<!-- This page is coming from my repo! -->
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Sign In with Auth0</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
-<body>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NPKP2M');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Naviance Sign-in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
+    <style>html, body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #dddddd;
+  color: rgba(30, 50, 50, 0.87);
+  height: 100%;
+  margin: 0px;
+}
 
-  <!--[if IE 8]>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
-  <![endif]-->
+a.back {
+  margin: auto;
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  margin-bottom: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url(data:image/png;base64,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);
+}
 
-  <!--[if lte IE 9]>
-  <script src="https://cdn.auth0.com/js/base64.js"></script>
-  <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
-  <![endif]-->
+.center {
+  text-align: center;
+}
 
-  <script src="https://cdn.auth0.com/js/lock/10.2/lock.min.js"></script>
-  <script>
-    // Decode utf8 characters properly
-    var config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
+#page-background {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
 
-    var connection = config.connection;
-    var prompt = config.prompt;
-    var languageDictionary;
-    var language;
-    if (config.dict && config.dict.signin && config.dict.signin.title) {
-      languageDictionary = { title: config.dict.signin.title };
-    } else if (typeof config.dict === 'string') {
-      language = config.dict;
+#centered-container {
+  width: 320px;
+  background-color: #ffffff;
+  margin: auto;
+  box-shadow: 1px 1px rgba(30, 30, 40, 0.25);
+}
+
+#centered-container .brand-header {
+  background-color: #007279;
+  background-image: url(data:image/png;base64,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);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  width: 100%;
+  height: 65px;
+  color: white;
+  text-align: center;
+}
+
+#centered-container, #centered-container .brand-header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#centered-container, #centered-container .brand-footer {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.brand-footer {
+  font-size: 12px;
+  text-align: center;
+  padding-bottom: 5px;
+  width: 320px;
+  margin: 20px auto;
+}
+
+.section-legacy {
+  border-bottom: #dddddd 1pt solid;
+  background-color: #eeeeee;
+}
+
+.section-navianceid {
+  border-top: #dddddd 1pt solid;
+  background-color: #ffffff;
+}
+
+.inactive button {
+  padding: 0 20px;
+}
+
+.call-to-action {
+  padding-top: 30px;
+  margin: auto;
+  width: 320px;
+}
+
+.call-to-action p {
+  margin: 6px auto 0 auto;
+  width: 275px;
+  text-align: center;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.call-to-action h2 {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  height: 33px;
+}
+
+.resend-verification  {
+  font-size: 13px;
+  margin: auto auto 30px auto;
+  display: flex;
+  justify-content: center;
+  line-height: 1.8;
+}
+
+.forgot-password {
+  font-size: 13px;
+  margin: 16px auto 29px auto;
+  display: flex;
+  justify-content: center;
+  line-height: 1.8;
+}
+
+.forgot-password a, .brand-footer a, .resend-verification a {
+  text-decoration: none;
+  color: rgba(0,0,0,0.87);
+  cursor: pointer;
+}
+
+.forgot-password a:hover, .resend-verification a:hover {
+  outline: 0;
+}
+
+#centered-container .login-prompts {
+  height: 100px;
+}
+
+#centered-container .login-prompts * {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.inactive {
+  padding-top: 24px;
+  padding-bottom: 28px;
+  text-align: center;
+}
+
+.inactive .inactive-message {
+  margin: 0;
+  height: 40px;
+}
+
+.legacy-login-form .inputs {
+  margin: 13px auto 0 auto;
+  width: 275px;
+}
+
+.legacy-login-form input {
+  display: inline-block;
+  position: relative;
+  right: 0;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 14px;
+  background: white;
+  color: rgba(0,0,0,0.87);
+  border: 0;
+  border-radius: 0 2px 2px 0;
+  font-size: 13px;
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-rendering: auto;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  text-align: start;
+}
+
+.legacy-login-form .input-container {
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  background: #f1f1f1;
+  padding-left: 40px;
+  margin-bottom: 9px;
+}
+
+.legacy-login-form .input-container i {
+  position: absolute;
+  height: 14px;
+  line-height: 14px;
+  margin-top: 12px;
+  margin-left: -27px;
+  color: #b1b1b1;
+}
+
+.legacy-login-form .input-container.new-password {
+  display: none;
+  position: relative;
+}
+
+.legacy-login-form .input-container.new-password.active {
+  display: block;
+}
+
+.legacy-login-form .button {
+  margin-top: 20px;
+}
+
+.legacy-login-form .password-policy {
+  display: none;
+  position: absolute;
+  padding: 5px;
+  border: 1px solid black;
+  background: black;
+  bottom: 49px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.legacy-login-form .password-policy ul {
+  margin-left: 0;
+  padding-left: 24px;
+}
+
+.legacy-login-form .password-policy .rule:not(.verified) {
+  color: #dd4b39;
+}
+
+.legacy-login-form .password-policy .rule.verified {
+  color: #7ED321;
+}
+
+.legacy-login-form .input-container.new-password.password-policy-verified .password-policy {
+  display: block;
+}
+
+.legacy-login-form .password-policy::after {
+  top: 100%;
+  left: 18px;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: transparent;
+  border-top-color: black;
+  border-width: 9px;
+  margin-left: -9px;
+}
+
+.legacy-login-form button, button.switch-login-mode {
+  border: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  box-sizing: border-box;
+  width: 275px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 50px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  background-color: #007279;
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.legacy-login-form button .submit-label {
+  display: inline-block;
+  height: 42px;
+  line-height: 42px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  text-rendering: auto;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  -webkit-writing-mode: horizontal-tb !important;
+  writing-mode: horizontal-tb !important;
+}
+
+.legacy-login-error, .navianceid-login-error {
+  display: none;
+  margin: 30px auto;
+  width: 300px;
+  overflow: hidden;
+  background-color: #ea3939;
+  color: #ffffff;
+  text-align: center;
+  padding: 0;
+  line-height: 1.4;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.legacy-login-error.active, .navianceid-login-error.active {
+  display: block;
+}
+
+#lock {
+  margin: 30px 0;
+}
+
+.signup-enabled .auth-lock-social-buttons-pane {
+  margin-top: 40px;
+}
+
+.section-navianceid .call-to-action {
+  display: none;
+}
+
+.section-navianceid .call-to-action h2 {
+  color: #555555;
+}
+
+.section-navianceid.signup-disabled .call-to-action.invitation,
+.section-navianceid.signup-enabled .call-to-action.default {
+  display: none;
+}
+
+.section-navianceid.signup-disabled .call-to-action.invitation,
+.section-navianceid.signup-enabled .call-to-action.default {
+  display: none;
+}
+
+.section-navianceid.signup-disabled .call-to-action.default,
+.section-navianceid.signup-enabled .call-to-action.invitation {
+  display: block;
+}
+
+.section-legacy .login-error-message, .section-navianceid .login-error-message, .auth0-lock.auth0-lock .auth0-lock-cred-pane .auth0-global-message.auth0-global-message-error {
+  text-align: center;
+  padding: 10px;
+  line-height: 1.8;
+
+  background-color: transparent;
+  border: 1px solid #e0182d;
+  color: black;
+  font-weight: 300;  
+  box-shadow: inset 4px 0px #e0182d;
+  text-transform: unset;
+  font-size: 12px;
+}
+
+.auth0-lock-header {
+  display: none !important;
+  height: 0;
+}
+
+#lock {
+  margin: 22px 0 24px 0 !important;
+}
+
+.auth0-lock.auth0-lock .auth0-lock-tabs-container .auth0-lock-tabs {
+  background-color: #eeeeee;
+}
+
+.auth0-lock.auth0-lock .auth0-lock-tabs li {
+  box-shadow: 0 0px 0 0 #ffffff !important;
+}
+
+.auth0-lock.auth0-lock .auth0-lock-tabs li.auth0-lock-tabs-current {
+  box-shadow: 0 2px 0 0 #007279 !important;
+}
+
+button.auth0-lock-submit {
+  border-radius: 50px !important;
+  width: 275px !important;
+  height: 44px !important;
+  margin: auto !important;
+  padding: 0 !important;
+}
+
+.new-flag {
+  font-weight: 700;
+  color: #ff8a00;
+}
+
+.left-border {
+  border-left: solid 1px #555;
+}
+
+.brand-footer a {
+  padding: 0 8px;
+}
+
+.brand-footer li {
+  float: left;
+  display: inline;
+}
+
+.brand-footer ul {
+  margin: auto;
+  display: inline-block;
+  padding: 0;
+}
+
+.copyright {
+  margin-bottom: 5px;
+}
+
+.tou-container {
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+.tou-container a {
+  color: #007279;
+  text-decoration: none;
+}</style>
+    <link rel="icon" type="image/png" sizes="192x192"  href="https://www.naviance.com/ico/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.naviance.com/ico/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="https://www.naviance.com/ico/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.naviance.com/ico/favicon-16x16.png" />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPKP2M"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="page-background">
+      <div id="centered-container">
+        <div class="brand-header"></div>
+        <div class="section-navianceid signup-disabled">
+          <div class="active">
+            <div class="call-to-action default">
+              <h2>Log in with Naviance ID</h2>
+              <p>Please use your email and password to access Naviance.</p>
+            </div>
+            <div class="call-to-action invitation">
+              <h2>You're invited!</h2>
+              <p>Please log in or sign up for a new Naviance ID to accept this invitation and enter Naviance.</p>
+            </div>
+            <div class="navianceid-login-error"><p class="navianceid-login-error-message"></p></div>
+            <div id="lock"></div>
+            <div class="center tou-container">
+              By logging in you agree to our <a href="https://ui-production.papaya.naviance.com/naviance-static-assets/html/policies/tou.html" target="_blank">Terms of Use</a>.
+            </div>
+          </div>
+        </div>
+        <div class="center">
+          <a id="back" class="back" href="/"></a>
+        </div>
+        <div class="resend-verification">
+          <a id = "resend-verification-link">Resend Verification Email</a>
+        </div>
+      </div>
+      <div class="brand-footer">
+        <div class="copyright">
+          Copyright &copy; <span class="year" id="copyright-year"></span> PowerSchool
+        </div>
+        <ul>
+          <li><a href="https://ui-production.papaya.naviance.com/naviance-static-assets/html/policies/tos.html" target="_blank">Terms of Service</a></li>
+          <li><a href="https://ui-production.papaya.naviance.com/naviance-static-assets/html/policies/privacy.html" target="_blank" class="left-border"><span class="new-flag">New</span> Privacy Policy</a></li>
+        </ul>
+        <div>
+          <ul>
+            <li><a href="https://ui-production.papaya.naviance.com/naviance-static-assets/html/policies/tou.html" target="_blank">Terms of Use</a></li>
+            <li><a href="https://ui-production.papaya.naviance.com/naviance-static-assets/html/policies/privacy.html#notice-ca-residents" target="_blank" class="left-border"> Your CA Privacy Rights</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--[if IE 8]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ie8/0.2.5/ie8.js"></script>
+    <![endif]-->
+    <!--[if lte IE 9]>
+    <script src="https://cdn.auth0.com/js/base64.js"></script>
+    <script src="https://cdn.auth0.com/js/es5-shim.min.js"></script>
+    <![endif]-->
+    <script src="https://cdn.auth0.com/js/lock/11.20/lock.min.js"></script>
+
+    <script>if (!String.prototype.startsWith) {
+	String.prototype.startsWith = function(search, pos) {
+		return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+	};
+}</script>
+    <script>// https://tc39.github.io/ecma262/#sec-array.prototype.find
+if (!Array.prototype.find) {
+    Object.defineProperty(Array.prototype, 'find', {
+      value: function(predicate) {
+       // 1. Let O be ? ToObject(this value).
+        if (this == null) {
+          throw new TypeError('"this" is null or not defined');
+        }
+  
+        var o = Object(this);
+  
+        // 2. Let len be ? ToLength(? Get(O, "length")).
+        var len = o.length >>> 0;
+  
+        // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+        if (typeof predicate !== 'function') {
+          throw new TypeError('predicate must be a function');
+        }
+  
+        // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        var thisArg = arguments[1];
+  
+        // 5. Let k be 0.
+        var k = 0;
+  
+        // 6. Repeat, while k < len
+        while (k < len) {
+          // a. Let Pk be ! ToString(k).
+          // b. Let kValue be ? Get(O, Pk).
+          // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+          // d. If testResult is true, return kValue.
+          var kValue = o[k];
+          if (predicate.call(thisArg, kValue, k, o)) {
+            return kValue;
+          }
+          // e. Increase k by 1.
+          k++;
+        }
+  
+        // 7. Return undefined.
+        return undefined;
+      },
+      configurable: true,
+      writable: true
+    });
+  }</script>
+    <script>// Production steps of ECMA-262, Edition 6, 22.1.2.1
+if (!Array.from) {
+    Array.from = (function () {
+      var toStr = Object.prototype.toString;
+      var isCallable = function (fn) {
+        return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+      };
+      var toInteger = function (value) {
+        var number = Number(value);
+        if (isNaN(number)) { return 0; }
+        if (number === 0 || !isFinite(number)) { return number; }
+        return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+      };
+      var maxSafeInteger = Math.pow(2, 53) - 1;
+      var toLength = function (value) {
+        var len = toInteger(value);
+        return Math.min(Math.max(len, 0), maxSafeInteger);
+      };
+  
+      // The length property of the from method is 1.
+      return function from(arrayLike/*, mapFn, thisArg */) {
+        // 1. Let C be the this value.
+        var C = this;
+  
+        // 2. Let items be ToObject(arrayLike).
+        var items = Object(arrayLike);
+  
+        // 3. ReturnIfAbrupt(items).
+        if (arrayLike == null) {
+          throw new TypeError('Array.from requires an array-like object - not null or undefined');
+        }
+  
+        // 4. If mapfn is undefined, then let mapping be false.
+        var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+        var T;
+        if (typeof mapFn !== 'undefined') {
+          // 5. else
+          // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+          if (!isCallable(mapFn)) {
+            throw new TypeError('Array.from: when provided, the second argument must be a function');
+          }
+  
+          // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+          if (arguments.length > 2) {
+            T = arguments[2];
+          }
+        }
+  
+        // 10. Let lenValue be Get(items, "length").
+        // 11. Let len be ToLength(lenValue).
+        var len = toLength(items.length);
+  
+        // 13. If IsConstructor(C) is true, then
+        // 13. a. Let A be the result of calling the [[Construct]] internal method 
+        // of C with an argument list containing the single item len.
+        // 14. a. Else, Let A be ArrayCreate(len).
+        var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+  
+        // 16. Let k be 0.
+        var k = 0;
+        // 17. Repeat, while k < len… (also steps a - h)
+        var kValue;
+        while (k < len) {
+          kValue = items[k];
+          if (mapFn) {
+            A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+          } else {
+            A[k] = kValue;
+          }
+          k += 1;
+        }
+        // 18. Let putStatus be Put(A, "length", len, true).
+        A.length = len;
+        // 20. Return A.
+        return A;
+      };
+    }());
+  }</script>
+    <script>if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, thisArg) {
+        thisArg = thisArg || window;
+        for (var i = 0; i < this.length; i++) {
+            callback.call(thisArg, this[i], i, this);
+        }
+    };
+}</script>
+    <script>(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(factory());
+}(this, (function () { 'use strict';
+
+/**
+ * @this {Promise}
+ */
+function finallyConstructor(callback) {
+  var constructor = this.constructor;
+  return this.then(
+    function(value) {
+      return constructor.resolve(callback()).then(function() {
+        return value;
+      });
+    },
+    function(reason) {
+      return constructor.resolve(callback()).then(function() {
+        return constructor.reject(reason);
+      });
+    }
+  );
+}
+
+// Store setTimeout reference so promise-polyfill will be unaffected by
+// other code modifying setTimeout (like sinon.useFakeTimers())
+var setTimeoutFunc = setTimeout;
+
+function noop() {}
+
+// Polyfill for Function.prototype.bind
+function bind(fn, thisArg) {
+  return function() {
+    fn.apply(thisArg, arguments);
+  };
+}
+
+/**
+ * @constructor
+ * @param {Function} fn
+ */
+function Promise(fn) {
+  if (!(this instanceof Promise))
+    throw new TypeError('Promises must be constructed via new');
+  if (typeof fn !== 'function') throw new TypeError('not a function');
+  /** @type {!number} */
+  this._state = 0;
+  /** @type {!boolean} */
+  this._handled = false;
+  /** @type {Promise|undefined} */
+  this._value = undefined;
+  /** @type {!Array<!Function>} */
+  this._deferreds = [];
+
+  doResolve(fn, this);
+}
+
+function handle(self, deferred) {
+  while (self._state === 3) {
+    self = self._value;
+  }
+  if (self._state === 0) {
+    self._deferreds.push(deferred);
+    return;
+  }
+  self._handled = true;
+  Promise._immediateFn(function() {
+    var cb = self._state === 1 ? deferred.onFulfilled : deferred.onRejected;
+    if (cb === null) {
+      (self._state === 1 ? resolve : reject)(deferred.promise, self._value);
+      return;
+    }
+    var ret;
+    try {
+      ret = cb(self._value);
+    } catch (e) {
+      reject(deferred.promise, e);
+      return;
+    }
+    resolve(deferred.promise, ret);
+  });
+}
+
+function resolve(self, newValue) {
+  try {
+    // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
+    if (newValue === self)
+      throw new TypeError('A promise cannot be resolved with itself.');
+    if (
+      newValue &&
+      (typeof newValue === 'object' || typeof newValue === 'function')
+    ) {
+      var then = newValue.then;
+      if (newValue instanceof Promise) {
+        self._state = 3;
+        self._value = newValue;
+        finale(self);
+        return;
+      } else if (typeof then === 'function') {
+        doResolve(bind(then, newValue), self);
+        return;
+      }
+    }
+    self._state = 1;
+    self._value = newValue;
+    finale(self);
+  } catch (e) {
+    reject(self, e);
+  }
+}
+
+function reject(self, newValue) {
+  self._state = 2;
+  self._value = newValue;
+  finale(self);
+}
+
+function finale(self) {
+  if (self._state === 2 && self._deferreds.length === 0) {
+    Promise._immediateFn(function() {
+      if (!self._handled) {
+        Promise._unhandledRejectionFn(self._value);
+      }
+    });
+  }
+
+  for (var i = 0, len = self._deferreds.length; i < len; i++) {
+    handle(self, self._deferreds[i]);
+  }
+  self._deferreds = null;
+}
+
+/**
+ * @constructor
+ */
+function Handler(onFulfilled, onRejected, promise) {
+  this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
+  this.onRejected = typeof onRejected === 'function' ? onRejected : null;
+  this.promise = promise;
+}
+
+/**
+ * Take a potentially misbehaving resolver function and make sure
+ * onFulfilled and onRejected are only called once.
+ *
+ * Makes no guarantees about asynchrony.
+ */
+function doResolve(fn, self) {
+  var done = false;
+  try {
+    fn(
+      function(value) {
+        if (done) return;
+        done = true;
+        resolve(self, value);
+      },
+      function(reason) {
+        if (done) return;
+        done = true;
+        reject(self, reason);
+      }
+    );
+  } catch (ex) {
+    if (done) return;
+    done = true;
+    reject(self, ex);
+  }
+}
+
+Promise.prototype['catch'] = function(onRejected) {
+  return this.then(null, onRejected);
+};
+
+Promise.prototype.then = function(onFulfilled, onRejected) {
+  // @ts-ignore
+  var prom = new this.constructor(noop);
+
+  handle(this, new Handler(onFulfilled, onRejected, prom));
+  return prom;
+};
+
+Promise.prototype['finally'] = finallyConstructor;
+
+Promise.all = function(arr) {
+  return new Promise(function(resolve, reject) {
+    if (!arr || typeof arr.length === 'undefined')
+      throw new TypeError('Promise.all accepts an array');
+    var args = Array.prototype.slice.call(arr);
+    if (args.length === 0) return resolve([]);
+    var remaining = args.length;
+
+    function res(i, val) {
+      try {
+        if (val && (typeof val === 'object' || typeof val === 'function')) {
+          var then = val.then;
+          if (typeof then === 'function') {
+            then.call(
+              val,
+              function(val) {
+                res(i, val);
+              },
+              reject
+            );
+            return;
+          }
+        }
+        args[i] = val;
+        if (--remaining === 0) {
+          resolve(args);
+        }
+      } catch (ex) {
+        reject(ex);
+      }
     }
 
-    var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
-      auth: {
-        redirectUrl: config.callbackURL,
-        responseType: config.callbackOnLocationHash ? 'token' : 'code',
-        params: config.internalOptions
-      },
-      assetsUrl:  config.assetsUrl,
-      allowedConnections: connection ? [connection] : null,
-      rememberLastLogin: !prompt,
-      language: language,
-      languageDictionary: languageDictionary,
-      theme: {
-        //logo:            'YOUR LOGO HERE',
-        //primaryColor:    'green'
-      },
-      closable: false,
-      // uncomment if you want small buttons for social providers
-      // socialButtonStyle: 'small'
-    });
+    for (var i = 0; i < args.length; i++) {
+      res(i, args[i]);
+    }
+  });
+};
 
-    lock.show();
-  </script>
-</body>
+Promise.resolve = function(value) {
+  if (value && typeof value === 'object' && value.constructor === Promise) {
+    return value;
+  }
+
+  return new Promise(function(resolve) {
+    resolve(value);
+  });
+};
+
+Promise.reject = function(value) {
+  return new Promise(function(resolve, reject) {
+    reject(value);
+  });
+};
+
+Promise.race = function(values) {
+  return new Promise(function(resolve, reject) {
+    for (var i = 0, len = values.length; i < len; i++) {
+      values[i].then(resolve, reject);
+    }
+  });
+};
+
+// Use polyfill for setImmediate for performance gains
+Promise._immediateFn =
+  (typeof setImmediate === 'function' &&
+    function(fn) {
+      setImmediate(fn);
+    }) ||
+  function(fn) {
+    setTimeoutFunc(fn, 0);
+  };
+
+Promise._unhandledRejectionFn = function _unhandledRejectionFn(err) {
+  if (typeof console !== 'undefined' && console) {
+    console.warn('Possible Unhandled Promise Rejection:', err); // eslint-disable-line no-console
+  }
+};
+
+/** @suppress {undefinedVars} */
+var globalNS = (function() {
+  // the only reliable means to get the global object is
+  // `Function('return this')()`
+  // However, this causes CSP violations in Chrome apps.
+  if (typeof self !== 'undefined') {
+    return self;
+  }
+  if (typeof window !== 'undefined') {
+    return window;
+  }
+  if (typeof global !== 'undefined') {
+    return global;
+  }
+  throw new Error('unable to locate global object');
+})();
+
+if (!('Promise' in globalNS)) {
+  globalNS['Promise'] = Promise;
+} else if (!globalNS.Promise.prototype['finally']) {
+  globalNS.Promise.prototype['finally'] = finallyConstructor;
+}
+
+})));
+</script>
+    <script>(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (factory((global.WHATWGFetch = {})));
+}(this, (function (exports) { 'use strict';
+
+  var support = {
+    searchParams: 'URLSearchParams' in self,
+    iterable: 'Symbol' in self && 'iterator' in Symbol,
+    blob:
+      'FileReader' in self &&
+      'Blob' in self &&
+      (function() {
+        try {
+          new Blob();
+          return true
+        } catch (e) {
+          return false
+        }
+      })(),
+    formData: 'FormData' in self,
+    arrayBuffer: 'ArrayBuffer' in self
+  };
+
+  function isDataView(obj) {
+    return obj && DataView.prototype.isPrototypeOf(obj)
+  }
+
+  if (support.arrayBuffer) {
+    var viewClasses = [
+      '[object Int8Array]',
+      '[object Uint8Array]',
+      '[object Uint8ClampedArray]',
+      '[object Int16Array]',
+      '[object Uint16Array]',
+      '[object Int32Array]',
+      '[object Uint32Array]',
+      '[object Float32Array]',
+      '[object Float64Array]'
+    ];
+
+    var isArrayBufferView =
+      ArrayBuffer.isView ||
+      function(obj) {
+        return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
+      };
+  }
+
+  function normalizeName(name) {
+    if (typeof name !== 'string') {
+      name = String(name);
+    }
+    if (/[^a-z0-9\-#$%&'*+.^_`|~]/i.test(name)) {
+      throw new TypeError('Invalid character in header field name')
+    }
+    return name.toLowerCase()
+  }
+
+  function normalizeValue(value) {
+    if (typeof value !== 'string') {
+      value = String(value);
+    }
+    return value
+  }
+
+  // Build a destructive iterator for the value list
+  function iteratorFor(items) {
+    var iterator = {
+      next: function() {
+        var value = items.shift();
+        return {done: value === undefined, value: value}
+      }
+    };
+
+    if (support.iterable) {
+      iterator[Symbol.iterator] = function() {
+        return iterator
+      };
+    }
+
+    return iterator
+  }
+
+  function Headers(headers) {
+    this.map = {};
+
+    if (headers instanceof Headers) {
+      headers.forEach(function(value, name) {
+        this.append(name, value);
+      }, this);
+    } else if (Array.isArray(headers)) {
+      headers.forEach(function(header) {
+        this.append(header[0], header[1]);
+      }, this);
+    } else if (headers) {
+      Object.getOwnPropertyNames(headers).forEach(function(name) {
+        this.append(name, headers[name]);
+      }, this);
+    }
+  }
+
+  Headers.prototype.append = function(name, value) {
+    name = normalizeName(name);
+    value = normalizeValue(value);
+    var oldValue = this.map[name];
+    this.map[name] = oldValue ? oldValue + ', ' + value : value;
+  };
+
+  Headers.prototype['delete'] = function(name) {
+    delete this.map[normalizeName(name)];
+  };
+
+  Headers.prototype.get = function(name) {
+    name = normalizeName(name);
+    return this.has(name) ? this.map[name] : null
+  };
+
+  Headers.prototype.has = function(name) {
+    return this.map.hasOwnProperty(normalizeName(name))
+  };
+
+  Headers.prototype.set = function(name, value) {
+    this.map[normalizeName(name)] = normalizeValue(value);
+  };
+
+  Headers.prototype.forEach = function(callback, thisArg) {
+    for (var name in this.map) {
+      if (this.map.hasOwnProperty(name)) {
+        callback.call(thisArg, this.map[name], name, this);
+      }
+    }
+  };
+
+  Headers.prototype.keys = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push(name);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.values = function() {
+    var items = [];
+    this.forEach(function(value) {
+      items.push(value);
+    });
+    return iteratorFor(items)
+  };
+
+  Headers.prototype.entries = function() {
+    var items = [];
+    this.forEach(function(value, name) {
+      items.push([name, value]);
+    });
+    return iteratorFor(items)
+  };
+
+  if (support.iterable) {
+    Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
+  }
+
+  function consumed(body) {
+    if (body.bodyUsed) {
+      return Promise.reject(new TypeError('Already read'))
+    }
+    body.bodyUsed = true;
+  }
+
+  function fileReaderReady(reader) {
+    return new Promise(function(resolve, reject) {
+      reader.onload = function() {
+        resolve(reader.result);
+      };
+      reader.onerror = function() {
+        reject(reader.error);
+      };
+    })
+  }
+
+  function readBlobAsArrayBuffer(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsArrayBuffer(blob);
+    return promise
+  }
+
+  function readBlobAsText(blob) {
+    var reader = new FileReader();
+    var promise = fileReaderReady(reader);
+    reader.readAsText(blob);
+    return promise
+  }
+
+  function readArrayBufferAsText(buf) {
+    var view = new Uint8Array(buf);
+    var chars = new Array(view.length);
+
+    for (var i = 0; i < view.length; i++) {
+      chars[i] = String.fromCharCode(view[i]);
+    }
+    return chars.join('')
+  }
+
+  function bufferClone(buf) {
+    if (buf.slice) {
+      return buf.slice(0)
+    } else {
+      var view = new Uint8Array(buf.byteLength);
+      view.set(new Uint8Array(buf));
+      return view.buffer
+    }
+  }
+
+  function Body() {
+    this.bodyUsed = false;
+
+    this._initBody = function(body) {
+      this._bodyInit = body;
+      if (!body) {
+        this._bodyText = '';
+      } else if (typeof body === 'string') {
+        this._bodyText = body;
+      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+        this._bodyBlob = body;
+      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+        this._bodyFormData = body;
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        this._bodyText = body.toString();
+      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+        this._bodyArrayBuffer = bufferClone(body.buffer);
+        // IE 10-11 can't handle a DataView body.
+        this._bodyInit = new Blob([this._bodyArrayBuffer]);
+      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+        this._bodyArrayBuffer = bufferClone(body);
+      } else {
+        this._bodyText = body = Object.prototype.toString.call(body);
+      }
+
+      if (!this.headers.get('content-type')) {
+        if (typeof body === 'string') {
+          this.headers.set('content-type', 'text/plain;charset=UTF-8');
+        } else if (this._bodyBlob && this._bodyBlob.type) {
+          this.headers.set('content-type', this._bodyBlob.type);
+        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        }
+      }
+    };
+
+    if (support.blob) {
+      this.blob = function() {
+        var rejected = consumed(this);
+        if (rejected) {
+          return rejected
+        }
+
+        if (this._bodyBlob) {
+          return Promise.resolve(this._bodyBlob)
+        } else if (this._bodyArrayBuffer) {
+          return Promise.resolve(new Blob([this._bodyArrayBuffer]))
+        } else if (this._bodyFormData) {
+          throw new Error('could not read FormData body as blob')
+        } else {
+          return Promise.resolve(new Blob([this._bodyText]))
+        }
+      };
+
+      this.arrayBuffer = function() {
+        if (this._bodyArrayBuffer) {
+          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
+        } else {
+          return this.blob().then(readBlobAsArrayBuffer)
+        }
+      };
+    }
+
+    this.text = function() {
+      var rejected = consumed(this);
+      if (rejected) {
+        return rejected
+      }
+
+      if (this._bodyBlob) {
+        return readBlobAsText(this._bodyBlob)
+      } else if (this._bodyArrayBuffer) {
+        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
+      } else if (this._bodyFormData) {
+        throw new Error('could not read FormData body as text')
+      } else {
+        return Promise.resolve(this._bodyText)
+      }
+    };
+
+    if (support.formData) {
+      this.formData = function() {
+        return this.text().then(decode)
+      };
+    }
+
+    this.json = function() {
+      return this.text().then(JSON.parse)
+    };
+
+    return this
+  }
+
+  // HTTP methods whose capitalization should be normalized
+  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT'];
+
+  function normalizeMethod(method) {
+    var upcased = method.toUpperCase();
+    return methods.indexOf(upcased) > -1 ? upcased : method
+  }
+
+  function Request(input, options) {
+    options = options || {};
+    var body = options.body;
+
+    if (input instanceof Request) {
+      if (input.bodyUsed) {
+        throw new TypeError('Already read')
+      }
+      this.url = input.url;
+      this.credentials = input.credentials;
+      if (!options.headers) {
+        this.headers = new Headers(input.headers);
+      }
+      this.method = input.method;
+      this.mode = input.mode;
+      this.signal = input.signal;
+      if (!body && input._bodyInit != null) {
+        body = input._bodyInit;
+        input.bodyUsed = true;
+      }
+    } else {
+      this.url = String(input);
+    }
+
+    this.credentials = options.credentials || this.credentials || 'same-origin';
+    if (options.headers || !this.headers) {
+      this.headers = new Headers(options.headers);
+    }
+    this.method = normalizeMethod(options.method || this.method || 'GET');
+    this.mode = options.mode || this.mode || null;
+    this.signal = options.signal || this.signal;
+    this.referrer = null;
+
+    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+      throw new TypeError('Body not allowed for GET or HEAD requests')
+    }
+    this._initBody(body);
+  }
+
+  Request.prototype.clone = function() {
+    return new Request(this, {body: this._bodyInit})
+  };
+
+  function decode(body) {
+    var form = new FormData();
+    body
+      .trim()
+      .split('&')
+      .forEach(function(bytes) {
+        if (bytes) {
+          var split = bytes.split('=');
+          var name = split.shift().replace(/\+/g, ' ');
+          var value = split.join('=').replace(/\+/g, ' ');
+          form.append(decodeURIComponent(name), decodeURIComponent(value));
+        }
+      });
+    return form
+  }
+
+  function parseHeaders(rawHeaders) {
+    var headers = new Headers();
+    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+    // https://tools.ietf.org/html/rfc7230#section-3.2
+    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
+      var parts = line.split(':');
+      var key = parts.shift().trim();
+      if (key) {
+        var value = parts.join(':').trim();
+        headers.append(key, value);
+      }
+    });
+    return headers
+  }
+
+  Body.call(Request.prototype);
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {};
+    }
+
+    this.type = 'default';
+    this.status = options.status === undefined ? 200 : options.status;
+    this.ok = this.status >= 200 && this.status < 300;
+    this.statusText = 'statusText' in options ? options.statusText : 'OK';
+    this.headers = new Headers(options.headers);
+    this.url = options.url || '';
+    this._initBody(bodyInit);
+  }
+
+  Body.call(Response.prototype);
+
+  Response.prototype.clone = function() {
+    return new Response(this._bodyInit, {
+      status: this.status,
+      statusText: this.statusText,
+      headers: new Headers(this.headers),
+      url: this.url
+    })
+  };
+
+  Response.error = function() {
+    var response = new Response(null, {status: 0, statusText: ''});
+    response.type = 'error';
+    return response
+  };
+
+  var redirectStatuses = [301, 302, 303, 307, 308];
+
+  Response.redirect = function(url, status) {
+    if (redirectStatuses.indexOf(status) === -1) {
+      throw new RangeError('Invalid status code')
+    }
+
+    return new Response(null, {status: status, headers: {location: url}})
+  };
+
+  exports.DOMException = self.DOMException;
+  try {
+    new exports.DOMException();
+  } catch (err) {
+    exports.DOMException = function(message, name) {
+      this.message = message;
+      this.name = name;
+      var error = Error(message);
+      this.stack = error.stack;
+    };
+    exports.DOMException.prototype = Object.create(Error.prototype);
+    exports.DOMException.prototype.constructor = exports.DOMException;
+  }
+
+  function fetch(input, init) {
+    return new Promise(function(resolve, reject) {
+      var request = new Request(input, init);
+
+      if (request.signal && request.signal.aborted) {
+        return reject(new exports.DOMException('Aborted', 'AbortError'))
+      }
+
+      var xhr = new XMLHttpRequest();
+
+      function abortXhr() {
+        xhr.abort();
+      }
+
+      xhr.onload = function() {
+        var options = {
+          status: xhr.status,
+          statusText: xhr.statusText,
+          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+        };
+        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+        var body = 'response' in xhr ? xhr.response : xhr.responseText;
+        resolve(new Response(body, options));
+      };
+
+      xhr.onerror = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.ontimeout = function() {
+        reject(new TypeError('Network request failed'));
+      };
+
+      xhr.onabort = function() {
+        reject(new exports.DOMException('Aborted', 'AbortError'));
+      };
+
+      xhr.open(request.method, request.url, true);
+
+      if (request.credentials === 'include') {
+        xhr.withCredentials = true;
+      } else if (request.credentials === 'omit') {
+        xhr.withCredentials = false;
+      }
+
+      if ('responseType' in xhr && support.blob) {
+        xhr.responseType = 'blob';
+      }
+
+      request.headers.forEach(function(value, name) {
+        xhr.setRequestHeader(name, value);
+      });
+
+      if (request.signal) {
+        request.signal.addEventListener('abort', abortXhr);
+
+        xhr.onreadystatechange = function() {
+          // DONE (success or failure)
+          if (xhr.readyState === 4) {
+            request.signal.removeEventListener('abort', abortXhr);
+          }
+        };
+      }
+
+      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
+    })
+  }
+
+  fetch.polyfill = true;
+
+  if (!self.fetch) {
+    self.fetch = fetch;
+    self.Headers = Headers;
+    self.Request = Request;
+    self.Response = Response;
+  }
+
+  exports.Headers = Headers;
+  exports.Request = Request;
+  exports.Response = Response;
+  exports.fetch = fetch;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+</script>
+
+    <script>'use strict';
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var config = JSON.parse(decodeURIComponent(escape(window.atob('@@config@@'))));
+config.extraParams = config.extraParams || {};
+
+function getIdRootURI() {
+  return (config.extraParams || {}).id_root_uri;
+}
+
+function getInvitationCode() {
+  var invitation = (config.internalOptions || {}).nav_invitation;
+  if (!invitation) {
+    invitation = (config.internalOptions || {}).invitation; // fall back to old invitation name
+  }
+
+  return invitation;
+}
+
+function getDecodedInvitation() {
+  var encodedInvitation = getInvitationCode();
+  if (encodedInvitation) {
+    try {
+      return JSON.parse(decodeURIComponent(escape(window.atob(encodedInvitation))));
+    } catch (err) {
+      console.log('Error decoding invitation code: ', err);
+    }
+  }
+  return null;
+}
+
+function getEmailAddress() {
+  var invitation = getDecodedInvitation();
+  if (invitation && invitation.email) {
+    return invitation.email;
+  }
+  return '';
+}
+
+function isInvitation() {
+  return !!getInvitationCode();
+}
+
+function isInvitationForExistingNavianceID() {
+  var invitation = getDecodedInvitation();
+  if (invitation && invitation.email) {
+    return invitation.existingNavianceID;
+  }
+  return false;
+}
+
+function $(selector, context) {
+  return (context || document).querySelector(selector);
+}
+
+function css(el, styles) {
+  for (var property in styles) {
+    el.style[property] = styles[property];
+  }
+}
+
+function loadLanguageConfigurations(config) {
+  var error = {
+    login: {
+      'lock.invalid_email_password': 'The username or password you entered doesn\'t match our records. Please reenter them and try again. If the problem continues, please reach out to your school or district site manager for next steps.'
+    }
+  };
+
+  var languageDictionary = {
+    usernameInputPlaceholder: 'Email address',
+    usernameOrEmailInputPlaceholder: 'Naviance ID',
+    passwordInputPlaceholder: 'Password',
+    forgotPasswordAction: 'Forgot Password?',
+    error: error
+  };
+  if (config.dict && config.dict.signin && config.dict.signin.title) {
+    languageDictionary = { title: config.dict.signin.title, error: error };
+  }
+  var language = typeof config.dict === 'string' ? config.dict : 'en';
+  return { language: language, languageDictionary: languageDictionary };
+}
+
+function getAuthConnections() {
+  var fallbackConnection = 'Username-Password-Authentication';
+  var id_root_uri = getUrlParameter('id_root_uri');
+  if (id_root_uri.length === 0) {
+    id_root_uri = config.auth0Tenant === 'hobsons' ? 'https://id.naviance.com' : 'https://tf-id-qa.mango.naviance.com';
+  }
+  var connectionUrl = id_root_uri + '/allowed-connections';
+
+  var authConnections = [];
+  // add the connection passed from the url
+  if (config.connection && config.connection.trim().length > 0) {
+    authConnections.push(config.connection);
+  }
+
+  var dedup = function dedup(arr) {
+    return arr.filter(function (ele, pos) {
+      return arr.indexOf(ele) === pos;
+    });
+  };
+
+  return fetch(connectionUrl).then(function (response) {
+    return response.json();
+  }).then(function (connectionJson) {
+    authConnections = [].concat(_toConsumableArray(authConnections), _toConsumableArray(connectionJson));
+    return dedup(authConnections);
+  }).catch(function (error) {
+    authConnections = [].concat(_toConsumableArray(authConnections), [fallbackConnection]);
+    return dedup(authConnections);
+  });
+}
+
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+
+function loadAuth0Lock(authConnections) {
+  var signUpEnabled = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var existingNavianceID = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+  var container = 'lock';
+  $('#' + container).innerHTML = '';
+  var prompt = config.prompt;
+  var email = getEmailAddress();
+  var prefill = email ? { email: email } : null;
+  var initialScreen = signUpEnabled && !existingNavianceID ? 'signUp' : 'login';
+
+  var _loadLanguageConfigur = loadLanguageConfigurations(config),
+      language = _loadLanguageConfigur.language,
+      languageDictionary = _loadLanguageConfigur.languageDictionary;
+
+  var lock = new Auth0Lock(config.clientID, config.auth0Domain, {
+    configurationBaseUrl: config.clientConfigurationBaseUrl,
+    overrides: {
+      __tenant: config.auth0Tenant,
+      __token_issuer: config.auth0Domain
+    },
+    language: language,
+    languageDictionary: languageDictionary,
+    container: container,
+    auth: {
+      redirectUrl: config.callbackURL,
+      responseType: (config.internalOptions || {}).response_type || (config.callbackOnLocationHash ? 'token' : 'code'),
+      params: config.internalOptions
+    },
+    assetsUrl: config.assetsUrl,
+    initialScreen: initialScreen,
+    allowSignUp: signUpEnabled,
+    allowedConnections: authConnections,
+    rememberLastLogin: !prompt,
+    theme: {
+      primaryColor: '#007279',
+      authButtons: {}
+    },
+    prefill: prefill,
+    closable: false,
+    defaultADUsernameFromEmailPrefix: false,
+    socialButtonStyle: 'big',
+    avatar: null
+  });
+
+  lock.on('authorization_error', function (error) {
+    hideNavianceIdLoginError();
+  });
+  lock.on('forgot_password ready', function () {
+    hideNavianceIdLoginError();
+  });
+  lock.on('signin ready', function () {
+    addLoginEventListener();
+  });
+
+  lock.show();
+}
+
+function showNavianceIdLoginError(message) {
+  var container = $('.navianceid-login-error');
+  var label = $('.navianceid-login-error-message');
+  label.innerHTML = '';
+  label.appendChild(document.createTextNode(message));
+  container.classList.add('active');
+}
+
+function hideResendEmailLink() {
+  if ($('.auth0-sso-notice-container')) {
+    $('#resend-verification-link').style.display = 'none';
+  } else {
+    $('#resend-verification-link').style.display = 'unset';
+  }
+}
+
+function addLoginEventListener() {
+  $('.auth0-lock-input').addEventListener("keyup", function (event) {
+    hideResendEmailLink();
+  });
+}
+
+function hideNavianceIdLoginError() {
+  var container = $('.navianceid-login-error');
+  var label = $('.navianceid-login-error-message');
+  label.innerHTML = '';
+  container.classList.remove('active');
+}
+
+var LoginPageCodeErrorEmailNotVerified = 'error_email_not_verified';
+var LoginPageSilentAuthenticationError = 'error_silent_authentication_failed';
+
+function getErrorFromURL() {
+  if (location.hash && location.hash.length > 1) {
+    return location.hash.substr(1);
+  }
+  var rawQueryString = location.search ? location.search.substr(1) : '';
+  var rawQueryParameters = rawQueryString.split('&');
+  var errorParameter = rawQueryParameters.find(function (p) {
+    return p.startsWith('error=');
+  });
+  if (errorParameter) {
+    var errorCode = errorParameter.substr('error='.length);
+    var queryWithoutError = rawQueryParameters.filter(function (p) {
+      return !p.startsWith('error=');
+    }).join('&');
+    var newQueryString = queryWithoutError ? '?' + queryWithoutError : '';
+    history.replaceState(null, null, location.pathname + newQueryString);
+    return errorCode;
+  }
+  return null;
+}
+
+function checkAndLoadAuth0Lock(signUpEnabled, existingNavianceID) {
+  // Need to check this to distinguish between a regular login vs delegated-admin/super user login.
+  var connection = getUrlParameter('connection');
+  var clientId = getUrlParameter('client');
+  // Delegated admin client id and app title
+  if (!connection && config.dict.signin.title === 'auth0-delegated-admin' && clientId === config.clientID) {
+    connection = 'hobsons-waad';
+  }
+
+  if (connection && connection !== 'Username-Password-Authentication') {
+    // This will also handle super user case.
+    loadAuth0Lock([connection], signUpEnabled, existingNavianceID);
+  } else {
+    getAuthConnections().then(function (connections) {
+      loadAuth0Lock(connections, signUpEnabled, existingNavianceID);
+    });
+  }
+}
+
+function loadLoginOptions(error) {
+  if (error === LoginPageCodeErrorEmailNotVerified) {
+    showNavianceIdLoginError('Please verify email address.');
+  } else if (error === LoginPageSilentAuthenticationError) {
+    showNavianceIdLoginError('Please log in again.');
+  }
+
+  if (!$('.auth0-lock')) {
+    if (Auth0Lock) {
+      var signUpEnabled = isInvitation();
+      var existingNavianceID = isInvitationForExistingNavianceID();
+      var section = $('.section-navianceid');
+      if (signUpEnabled) {
+        section.classList.add('signup-enabled');
+        section.classList.remove('signup-disabled');
+        var link = document.getElementById('resend-verification-link');
+        link.style.display = 'none';
+        link.style.visibility = 'hidden';
+      } else {
+        section.classList.remove('signup-enabled');
+        section.classList.add('signup-disabled');
+      }
+      checkAndLoadAuth0Lock(signUpEnabled, existingNavianceID);
+    }
+  }
+}
+
+function redirectToLoginIfNotAccessedViaLink(error) {
+  var idRootURI = getIdRootURI();
+  if (document.referrer === '' && idRootURI && !error && !isInvitation()) {
+    window.location = idRootURI;
+  }
+}
+
+function setCopyrightYear() {
+  $('#copyright-year').innerHTML = new Date().getFullYear();
+}
+
+function initPage() {
+  document.getElementById('back').href = getIdRootURI();
+  document.getElementById('resend-verification-link').href = getIdRootURI() + "/resend-verification-email";
+  setCopyrightYear();
+
+  var error = getErrorFromURL();
+  redirectToLoginIfNotAccessedViaLink(error);
+  loadLoginOptions(error);
+}
+
+if (document.readyState === "complete") {
+  initPage();
+} else {
+  document.addEventListener("DOMContentLoaded", initPage);
+}</script>
+  </body>
 </html>
